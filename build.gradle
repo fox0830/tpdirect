@@ -12,6 +12,10 @@ publishing {
     publications {
         aar(MavenPublication) {
             from components.release
+            artifact("$buildDir/outputs/aar/tpdirect.aar") // 指定 .aar 文件位置
+            groupId = 'com.github.fox0830'
+            artifactId = 'tpdirect'
+            version = '3.9.1-4'
         }
     }
 }
