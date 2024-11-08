@@ -50,7 +50,7 @@ publishing {
             artifact("$buildDir/outputs/aar/tpdirect.aar") // 確保此路徑對應到生成的 .aar 文件
             groupId = 'com.github.fox0830'
             artifactId = 'tpdirect'
-            version = '3.9.1-6'
+            version = '3.9.1-7'
         }
     }
     repositories {
