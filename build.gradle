@@ -3,6 +3,23 @@ plugins {
     id 'maven-publish'
 }
 
+buildscript {
+    repositories {
+        google()  // 添加 Google 的倉庫
+        mavenCentral()  // 添加 Maven Central 的倉庫
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.0.0'  // 指定 Android Gradle 插件的版本
+    }
+}
+
+allprojects {
+    repositories {
+        google()  // 添加 Google 的倉庫
+        mavenCentral()  // 添加 Maven Central 的倉庫
+    }
+}
+
 android {
     compileSdkVersion 33
 
