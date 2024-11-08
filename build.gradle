@@ -7,3 +7,11 @@ configurations {
 dependencies {
     implementation files('libs/tpdirect.aar') // 將 `yourfile.aar` 替換為你的 .aar 文件名稱
 }
+
+publishing {
+    publications {
+        aar(MavenPublication) {
+            from components.release
+        }
+    }
+}
