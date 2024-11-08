@@ -1,25 +1,9 @@
-plugins {
-    id 'com.android.library' version '7.3.0'
-}
+apply plugin: 'java-library'
 
-android {
-    compileSdkVersion 34
-    defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 34
-    }
-}
-
-// 將 libs 目錄下的 .aar 文件納入構建
 configurations {
     implementation
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation files('libs/tpdirect.aar') // 將 `yourfile.aar` 替換為你的 .aar 文件名稱
-}
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
 }
