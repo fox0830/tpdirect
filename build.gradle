@@ -1,22 +1,45 @@
-apply plugin: 'java-library'
-apply plugin: 'maven-publish'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
 
-configurations {
-    implementation
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
 }
 
 dependencies {
-    implementation files('libs/tpdirect.aar') // 將 `yourfile.aar` 替換為你的 .aar 文件名稱
+    implementation files('libs/tpdirect.aar') // 確保 .aar 路徑正確
 }
 
 publishing {
     publications {
         aar(MavenPublication) {
+            // 指定從 Android Library 的 Release 組件獲取
             from components.release
-            artifact("$buildDir/outputs/aar/tpdirect.aar") // 指定 .aar 文件位置
+            artifact("$buildDir/outputs/aar/tpdirect.aar") // 確保此路徑對應到生成的 .aar 文件
             groupId = 'com.github.fox0830'
             artifactId = 'tpdirect'
             version = '3.9.1-5'
+        }
+    }
+    repositories {
+        mavenLocal()  // 本地發佈到 Maven Local
+        maven {
+            url "https://jitpack.io" // 也可以選擇發佈到 JitPack
         }
     }
 }
